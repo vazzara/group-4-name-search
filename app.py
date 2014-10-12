@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import utils
+import namesearch
 # app is an instance of the Flask class
 
 app = Flask(__name__)
@@ -14,7 +15,8 @@ def home():
         if (button == "Clear" or search == None):
             return render_template("home.html")
         else:
-            return render_template("results.html")
+            results = namesearch.get_analysis(search)
+            return render_template("results.html", results)
 
 @app.route("/results")
 def results():
