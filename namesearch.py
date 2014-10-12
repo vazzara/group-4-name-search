@@ -25,6 +25,9 @@ def name_occurrence(text):
 def analyse_list(namesList):
     #takes list of names, returns analysis + answer to question
     print ""
+    
+def get_analysis(q):
+    return analyze_list(name_occurence(parse_urls(search(q))))
 
 if __name__ == "__main__":
     urlsList = search("Who is the President of the United States?")
