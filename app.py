@@ -6,7 +6,7 @@ import namesearch
 app = Flask(__name__)
 @app.route("/", methods=["GET","POST"])
 @app.route("/home", methods=["GET","POST"])
-def home():
+def main():
     if request.method=="GET":
         return render_template("home.html")
     else:
@@ -21,9 +21,9 @@ def home():
 @app.route("/results")
 def results():
     return render_template("results.html")
-                
+
 if __name__=="__main__":
 # set the instance variable debug to True
     app.debug = True
 # call the run method
-    app.run(port=6000)
+    app.run()
