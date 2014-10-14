@@ -16,7 +16,9 @@ def main():
             return render_template("home.html")
         else:
             results = namesearch.get_analysis(search)
-            return render_template("results.html", results=results, search=search)
+            keys = results.keys()
+            values = results.values()
+            return render_template("results.html", keys=keys, values=values, search=search)
 
 @app.route("/results")
 def results():
