@@ -15,10 +15,8 @@ def main():
         if (button == "Clear" or search == None):
             return render_template("home.html")
         else:
-            results = namesearch.get_analysis(search)
-            keys = results.keys()
-            values = results.values()
-            return render_template("results.html", keys=keys, values=values, search=search)
+            values = namesearch.get_analysis(search)
+            return render_template("results.html", values=values, search=search)
 
 @app.route("/results")
 def results():
