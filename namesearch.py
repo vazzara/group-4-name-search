@@ -3,8 +3,6 @@ import re
 from bs4 import BeautifulSoup
 import namefinder1
 
-names1 = {}
-
 def search(q):
     #takes question q, returns list of urls
     urlsList = []
@@ -30,11 +28,14 @@ def name_occurrence(text):
 
 def analyse_list(namesList):
     #takes list of names, returns analysis + answer to question
-    max_occurence = ['string',0]
+    top5 = []
     for item in namesList:
-        if (item[1]>max_occurence[1]):
-            max_occurence=item
-    return max_occurence[0]
+        if len(top5)==0:
+            top5.append(item[0])
+        for x in top5:
+            if item[1]>namesList[x][1]
+            top5.index(x) = item[0]
+    return top5
 
 def get_analysis(q):
     return analyze_list(name_occurence(parse_urls(search(q))))
