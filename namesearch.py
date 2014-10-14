@@ -22,11 +22,11 @@ def parse_urls(urlsList):
     print "Parsed HTML code!"
     return html
 
-def name_occurrence(text):
+def name_occurence(text):
     names1 = namefinder1.findNames1(text)
     return names1
 
-def analyse_list(namesList):
+def analyze_list(namesList):
     #takes list of names, returns analysis + answer to question
     top5 = []
     for item in namesList:
@@ -43,4 +43,3 @@ def get_analysis(q):
 
 if __name__ == "__main__":
     print get_analysis("Who is the President of the United States?")
-
