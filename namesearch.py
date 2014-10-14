@@ -1,6 +1,9 @@
 import google
 import re
 from bs4 import BeautifulSoup
+import namefinder1
+
+names1 = {}
 
 def search(q):
     #takes question q, returns list of urls
@@ -22,38 +25,20 @@ def parse_urls(urlsList):
     return html
 
 def name_occurrence(text):
-    names = []
-    with open("names_list.txt") as f:
-        for line in f:
-            names.append(line.split()[0].capitalize())
-
-    extras = ["Mister", "Mr.", "Mrs.", "Ms.", "Master", "Dr.", "Doctor", "President"]
-    for item in extras:
-        names.append(item)
-
-    #test prints
-    #print(text[:100])
-    #print names[:10]
-
-    search = ""
-    results = []
-    for item in names:
-        #print item
-        search = r"(([A-Z][a-z-]+){1,2}\s){2,3}"
-        L = re.findall(search,  text)
-        if (L != []):
-            results.append(L[0]);
-    print "Parsed names!"
-    print results
+    names1 = namefinder1.findNames1(text)
+    return names1
 
 def analyse_list(namesList):
     #takes list of names, returns analysis + answer to question
-    results = {"First Result":5000,"Second Result":2000,"Third Result":1000}
-    return results
+    max_occurence = ['string',0]
+    for item in namesList:
+        if (item[1]>max_occurence[1]):
+            max_occurence=item
+    return max_occurence[0]
 
 def get_analysis(q):
     return analyze_list(name_occurence(parse_urls(search(q))))
 
 if __name__ == "__main__":
-    urlsList = search("Who is the President of the United States?")
-    name_occurrence(parse_urls(urlsList))
+    print get_analysis("Who is the President of the United States?")
+
