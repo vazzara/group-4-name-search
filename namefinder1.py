@@ -71,22 +71,12 @@ def findNames1(text):
                         lastnamesInText.append(step3[endOfFirstWord+1:])
                         fullnameToAppend = step3
 
-                    if (fullnameToAppend not in fullnamesInText):
+                    if (fullnameToAppend not in fullnamesInText.keys()):
                         fullnamesInText[fullnameToAppend]=[fullnameToAppend,1]
-
+                    elif fullnameToAppend in fullnamesInText.keys():
+                        fullnamesInText[fullnameToAppend][1]+=1
                     #this part determines the length of the full name, and then skips over the entire thing,
                     #so that segments of the full name are not mistaken as full names.
-                    for n in finalfullname:
-                        if n == " ":
-                            l = l+1
-                else:
-                    finalfullname = step3
-                    if (honorificsFlag == True):
-                        fullnameToAppend = step3[endOfFirstWord+1:]
-                    else:
-                        lastnamesInText.append(step3[endOfFirstWord+1:])
-                        fullnameToAppend = step3
-                    fullnamesInText[fullnameToAppend][1]+=1
                     for n in finalfullname:
                         if n == " ":
                             l = l+1
