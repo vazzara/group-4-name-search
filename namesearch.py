@@ -33,12 +33,13 @@ def analyse_list(namesList):
         if len(top5)==0:
             top5.append(item[0])
         for x in top5:
-            if item[1]>namesList[x][1]
-            top5.index(x) = item[0]
+            if item[1] > namesList[x][1]:
+                top5[top5.index(x)] = item[0]
     return top5
 
 def get_analysis(q):
-    return analyze_list(name_occurence(parse_urls(search(q))))
+    names = analyze_list(name_occurence(parse_urls(search(q))))
+    return names
 
 if __name__ == "__main__":
     print get_analysis("Who is the President of the United States?")
