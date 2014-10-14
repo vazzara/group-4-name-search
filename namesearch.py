@@ -31,7 +31,7 @@ def analyze_list(namesList):
     #takes list of names, returns analysis + answer to question
     top5 = []
     for item in namesList:
-        if len(top5)==0:
+        if len(top5)<=5:
             top5.append(namesList[item])
         else:
           for x in top5:
