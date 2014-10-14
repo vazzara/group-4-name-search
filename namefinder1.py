@@ -18,10 +18,10 @@ numfirstnames = 0
 numlastnames = 0
 numfullnames = 0
 
-firstnamesInText = [] 
+firstnamesInText = []
 lastnamesInText = []
 fullnamesInText = {}
-    
+
 
 #Same method, but more useful for large texts because it does not print out every step.
 def findNames1(text):
@@ -29,7 +29,7 @@ def findNames1(text):
     textList = text.split()
     #The variable i will keep our place.
     i = 0
-    #The variable l will be used later to increment i. 
+    #The variable l will be used later to increment i.
     l = 0
     #This variable will be used to mark each finalized full name that is found.
     finalfullname = ""
@@ -40,16 +40,16 @@ def findNames1(text):
         #boolean variables
         firstnameFlag = currentWord.upper() in firstnamesMaster and (currentWord.upper() != "AN") and currentWord[0].isupper()
         honorificsFlag = (currentWord in honorificsMaster) and (not firstnameFlag)
-    
+
         #checks if the currentWord is a first name.
         if (firstnameFlag or honorificsFlag):
             #adds that first name to our list of first names in the text.
             endOfFirstWord = len(currentWord)
             if (firstnameFlag and currentWord not in firstnamesInText):
                 firstnamesInText.append(currentWord)
-                
+
             #regular expression that includes this first name plus any capitalized
-            #names after it (gets the full name, if there is one). 
+            #names after it (gets the full name, if there is one).
             regex = "(" +  currentWord + "((\s[A-Z][a-z]+)+)" + ")"
 
             #this part isolates the longest version of the full name that is found, in three steps.
@@ -83,7 +83,7 @@ def findNames1(text):
         l = l+1
         i = i+l
     return fullnamesInText
- 
+
 
 # to call function call getNames(text)
 # then fullnamesInText will be a list of the full names
